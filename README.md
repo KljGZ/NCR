@@ -41,33 +41,8 @@ mkdir -p save
 
 Run NCR with a defense:
 ```bash
-python main_NCR.py --model resnet --dataset cifar --attack NCR --lr 0.05 --defence flame
+python main_NCR.py --model resnet --dataset cifar --attack NCR --lr 0.05 --defence snowball
 ```
-
-## Reproducible Runs
-Predefined scripts run NCR across multiple defenses and datasets:
-```bash
-bash run_NCR_cifar.sh
-bash run_NCR_fashion.sh
-bash run_NCR_Mnist.sh
-```
-
-## Datasets
-`main_NCR.py` supports `mnist`, `fashion_mnist`, and `cifar`. Datasets are downloaded via torchvision by default.
-Non-IID client splits use `.npy` files in `data/` (for example, `data/iid_cifar.npy`).
-
-## Key Arguments
-Common flags (see `utils/options.py` for the full list):
-- `--attack`: attack method (use `NCR` for this work)
-- `--defence`: defense strategy (examples: `avg`, `flame`, `fltrust`, `multikrum`, `fld`, `alignins`, `snowball`, `scope`)
-- `--dataset`: `mnist` | `fashion_mnist` | `cifar`
-- `--model`: `cnn` | `resnet` | `VGG` | `mlp` (depending on dataset)
-- `--poison_frac`: fraction of data to poison
-
-## Output
-Results are saved under the directory specified by `--save` (default: `save/`). The provided run scripts also create
-`logs/` with per-run logs.
-
 ## Project Structure
 - `main_NCR.py`: main training/attack entry point
 - `attack/`: attack implementations and utilities
@@ -76,5 +51,4 @@ Results are saved under the directory specified by `--save` (default: `save/`). 
 - `utils/`: argument parsing, sampling, and helpers
 - `run_NCR_*.sh`: runnable experiment presets
 
-## Citation
-If you use this code in your research, please cite the paper.
+
