@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-# Run DBA attack on CIFAR-100 with multiple defences. Each task continues to the next if one fails.
 
 set -u
 
