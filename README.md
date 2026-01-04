@@ -3,15 +3,7 @@
 Research code for the paper "NCR: Neuron-Level Critical Replacement for Backdoor Attacks in Federated Learning".
 
 ## Overview
-Federated learning (FL) is widely adopted in AIoT to address privacy and resource constraints, but it remains vulnerable
-to stealthy backdoor attacks due to heterogeneous data distributions. Existing attacks often upload an entire malicious
-model, which introduces many redundant parameters and increases the chance of detection.
-
-NCR (Neuron-Level Critical Replacement) targets this weakness by replacing only neuron-level parameters between
-malicious and benign models, and by focusing updates on a small set of sensitive neurons and associated weights.
-Experiments show NCR maintains high attack success rates (>= 90%) under multiple advanced defenses at low poisoning
-rates, and validation on the Udacity self-driving simulator demonstrates practical risk.
-
+Federated learning (FL) is widely adopted in Artificial Intelligence of Things (AIoT) to address privacy and resource constraints; however, it is vulnerable to stealthy backdoor attacks due to heterogeneous device data distributions. Existing backdoor attacks typically involve uploading the entire maliciously optimized model, overlooking the critical attack surface that is determined by only a few key neurons, which significantly impact the effectiveness of an attack. Consequently, despite ongoing optimization efforts, conventional approaches still introduce substantial redundant parameters, increasing the risk of detection by defense mechanisms. Motivated by this observation, we propose a neuron-level critical replacement (NCR) strategy, which precisely replaces neuron-level parameters between malicious and benign models at a significantly finer granularity than existing techniques. Furthermore, we introduce a parameter-focusing mechanism that confines attacks to a limited number of highly sensitive neurons and their associated weights, significantly reducing unnecessary parameter perturbations. Even under a low poisoning rate, a backdoor can still be successfully implanted in the presence of nine advanced defense mechanisms. Moreover, validation experiments on the Udacity self-driving simulation platform further confirm NCR’s real-world threat to AIoT systems that rely on precise, model-driven decisions.
 ## Requirements
 
 Tested environment:
@@ -41,7 +33,7 @@ mkdir -p save
 
 Run NCR with a defense:
 ```bash
-python main_NCR.py --model resnet --dataset cifar --attack NCR --lr 0.05 --defence snowball
+python main_NCR.py --model resnet --dataset cifar --attack NCR --lr 0.05 --defence flame
 ```
 ## Project Structure
 - `main_NCR.py`: main training/attack entry point
